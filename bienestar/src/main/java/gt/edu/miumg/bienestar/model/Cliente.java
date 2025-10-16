@@ -1,5 +1,6 @@
 package gt.edu.miumg.bienestar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -23,11 +24,14 @@ public class Cliente{
         @Column(length=20)
         private String telefono;
         @Column(nullable = false)
+        @JsonIgnore
         private String contrasena;
+        @Column(nullable = false)
+        private String rol = "CLIENTE";
         
         public Cliente(){}
 
-    public Cliente(Long idCliente, String nombre, String dpi, LocalDate fechaNaci, String correo, String telefono, String contrasena) {
+    public Cliente(Long idCliente, String nombre, String dpi, LocalDate fechaNaci, String correo, String telefono, String contrasena, String rol) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.dpi = dpi;
@@ -35,6 +39,7 @@ public class Cliente{
         this.correo = correo;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.rol = rol;
     }
 
     public Long getIdCliente() {
@@ -91,6 +96,14 @@ public class Cliente{
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }        
+    }  
+    
+    public String getRol(){
+        return rol;
+    }
+    
+    public void setRol(String rol){
+        this.rol = rol;
+    }
         
 }
