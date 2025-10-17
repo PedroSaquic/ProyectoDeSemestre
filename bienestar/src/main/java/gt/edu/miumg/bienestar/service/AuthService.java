@@ -29,7 +29,7 @@ public class AuthService {
             throw new RuntimeException("Usuario o contraseña invalidos");
         }
         
-        String token = jwtUtil.generateToken(cliente.getCorreo());
+        String token = jwtUtil.generateToken(cliente.getCorreo(), cliente.getRol());
         return new LoginResponse(token, cliente.getIdCliente(), cliente.getNombre(), cliente.getCorreo());
     }
 }
