@@ -24,6 +24,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/clientes/registrar").permitAll() // Permitir registrar cliente sin login
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Permitir Swagger UI
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("api/home/**").hasRole("CLIENTE")
                 .anyRequest().authenticated() // Cualquier otra ruta requiere autenticación
             )
             .formLogin(form -> form.disable())
