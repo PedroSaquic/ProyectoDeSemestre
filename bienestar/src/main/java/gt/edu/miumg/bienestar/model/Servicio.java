@@ -42,6 +42,10 @@ public class Servicio {
     @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
     private List<Cita> citas;
 
+    public Servicio(){
+        
+    }
+    
     public Servicio(Long idServicio, String descripcion, int precio, int duracionMinutos, List<Cita> citas) {
         this.idServicio = idServicio;
         this.descripcion = descripcion;

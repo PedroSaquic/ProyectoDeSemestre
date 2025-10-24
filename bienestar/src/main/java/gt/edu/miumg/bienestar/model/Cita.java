@@ -32,20 +32,14 @@ public class Cita {
     
     @Enumerated(EnumType.STRING)
     private EstadoCita estado; //PENDIENTE O CONFIRMADA
+
+    public Cita() {
+    }
     
     public enum EstadoCita{
         PENDIENTE,
         CONFIRMADA,
         CANCELADA
-    }
-
-    public Cita(Long idCitas, Cliente cliente, Servicio servicio, LocalDateTime fechaHora, String notas, EstadoCita estado) {
-        this.idCitas = idCitas;
-        this.cliente = cliente;
-        this.servicio = servicio;
-        this.fechaHora = fechaHora;
-        this.notas = notas;
-        this.estado = estado;
     }
 
     public Long getIdCitas() {
