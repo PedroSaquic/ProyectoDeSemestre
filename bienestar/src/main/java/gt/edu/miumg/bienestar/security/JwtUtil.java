@@ -16,13 +16,14 @@ public class JwtUtil {
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long EXPIRATION_TIME = 3600000;
     
-    public String generateToken(String correo, String rol){
+    public String generateToken(String correo, String rol, String nombre){
         
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", rol);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(correo)
+                .claim("nombre", nombre)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key)
